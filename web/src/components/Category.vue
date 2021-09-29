@@ -5,8 +5,8 @@
 <!--  分类内容-->
   <div>
 <!--    这部分还是改为flex布局好一点-->
-    <el-row :gutter="15">
-      <el-col :span="4">
+    <div class="category-wrapper">
+      <div class="category-container__left">
 <!--        todo:是否可滚动-->
         <el-scrollbar>
           <div class="category-left">
@@ -26,16 +26,21 @@
             </div>
           </div>
         </el-scrollbar>
-      </el-col>
-      <el-col :span="20">
+      </div>
+      <div class="category-container__right">
           <div class="category-right">
             <div class="header">
               <p><strong>最新产品:</strong> <span>{{latestName}}</span></p>
             </div>
             <div class="product-exhibit__area">
-              <el-scrollbar>
+              <el-scrollbar height="100px">
                 <div class="product-exhibit__inner">
-                 <el-card v-for="(item) in productList" :key="item.id">
+                 <el-card
+                     v-for="(item) in productList"
+                     :key="item.id"
+                     class="product-container"
+                     shadow="hover"
+                 >
                   <img :src="item.image" alt=""/>
                    <div class="card-footer">
                      <p>{{item.name}}</p>
@@ -46,8 +51,8 @@
               </el-scrollbar>
             </div>
           </div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </div>
 </template>
@@ -221,7 +226,17 @@ export default {
 
 .category-wrapper{
   /* css 适配 */
-  margin: 0 30px 0 30px;
+  margin: 60px 30px 0 30px;
+  .category-wrapper{
+    display: flex;
+    .category-container__left{
+      max-width: 20%;
+
+    }
+    .category-container__right{
+      //width: 80%;
+    }
+  }
   .category-left{
     border: green solid 5px;
     background-color: green;
@@ -229,6 +244,7 @@ export default {
     min-height: 550px;
   }
   .category-right{
+    margin-left: 15px;
     .header{
       height: 65px;
       line-height: 65px;
@@ -236,6 +252,10 @@ export default {
       background-color: green;
       color: #FFFFFF;
       border-radius: 7px;
+    }
+    p{
+      margin: 0;
+      padding-left: 50px;
     }
   }
   .inner{
@@ -249,6 +269,7 @@ export default {
     .level-one-item{
       /* 一级分类的字体 */
       div{
+        min-width: 150px;
         background-color: gray;
         span{
           color: #ffffff;
@@ -262,7 +283,9 @@ export default {
   .product-exhibit__inner{
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
-    grid-template-rows: 33.33% 33.33% 33.33%;
+    .product-container{
+      margin:8px;
+    }
   }
 }
 
