@@ -1,50 +1,59 @@
 <template>
     <div>
-        <el-menu mode="horizontal" class=""
-                 :default-active="defaultActive"
-                 :router="true"
-                 text-color="#ffffff"
-                 active-text-color="#ffffff"
-                 background-color="#32CD32">
-            <el-menu-item index="/" :class="{'default-bg-color':defaultActive==='/index'}">网站简介</el-menu-item>
-            <el-menu-item index="/about" :class="{'default-bg-color':defaultActive==='/about'}">关于我们</el-menu-item>
-            <el-menu-item index="/product" :class="{'default-bg-color':defaultActive==='/product'}">产品中心</el-menu-item>
-            <el-menu-item index="/skills" :class="{'default-bg-color':defaultActive==='/skills'}">技术支持</el-menu-item>
-            <el-menu-item index="/contract" :class="{'default-bg-color':defaultActive==='/contract'}">联系我们</el-menu-item>
-        </el-menu>
+       <div class="header-top__wrapper">
+         <div class="header-top__left">
+<!--           logo 预留-->
+           <div class="website-logo">
+
+           </div>
+<!--           网站名-->
+           <div class="website-info">
+             <h1 class="website-info__name">{{websiteName}}</h1>
+<!--             todo:小字说明-->
+             <span></span>
+           </div>
+         </div>
+<!--         todo:电话号码-->
+         <div class="header-top__right">
+         </div>
+       </div>
+      <Nav></Nav>
     </div>
 </template>
 <script>
+import Nav from './Nav'
+import Triangle from '../Triangle'
 export default {
   name: 'Header',
+  components: { Triangle, Nav },
   data: () => {
     return {
-      defaultActive: '/'
-    }
-  },
-  mounted () {
-    this.watchRouter()
-  },
-  watch: {
-    $route: {
-      handler: function (val) {
-        // console.log(val)
-        this.defaultActive = val.fullPath
-      },
-      immediate: true
+      websiteName: '北京xxx公司'
     }
   },
   methods: {
-    watchRouter () {
-      this.$watch('$router', function (val) {
-        console.log(val)
-      })
-    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.header-top__wrapper{
+  display: inline-flex;
+  .header-top__left{
+    margin-left:300px;
+    display: inline;
+  }
+  .header-top__right{
+    display: inline;
+    background-color: green;
+    border-radius: 8px;
+    width: 300px;
+    height: 80%;
+    min-height: 70px;
+    margin-left: 20vw;
+    justify-self: center;
+  }
+}
 .test{
   color:limegreen;
 }

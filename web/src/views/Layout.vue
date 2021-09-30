@@ -1,13 +1,13 @@
 <template>
-<div class="app-wrapper">
-  <div :style="{minHeight:mainMinHeight+'px'}">
-    <div class="app-header">
-    <Header></Header>
-    </div>
-      <router-view/>
+<div>
+  <div class="app-wrapper" :style="dStyle">
+      <div class="app-header">
+         <Header></Header>
+      </div>
+    <router-view/>
   </div>
-  <div class="app-footer">
-    <Footer ref="footer"></Footer>
+  <div ref="footer" class="app-footer">
+    <Footer></Footer>
   </div>
 </div>
 </template>
@@ -18,23 +18,42 @@ import Footer from '../components/public/Footer'
 export default {
   name: 'Layout',
   components: { Footer, Header },
+  data: () => {
+    return {
+      dStyle: ''
+    }
+  },
   computed: {
     mainMinHeight () {
-      return window.innerHeight - this.$refs.footer.$el.offsetHeight
+      if (this.$refs.footer) {
+        return window.innerHeight - this.$refs.footer.$el.offsetHeight
+      } else {
+        return 500
+      }
+      // return (window.innerHeight - this.$refs.footer.$el.offsetHeight)
     }
+  },
+  methods: {
+    dymaticStyle () {
+      if (this.$refs.footer) { this.dStyle = { minHeight: `${window.innerHeight - this.$refs.footer.offsetHeight - 1}px` } } else {
+        this.dStyle = ''
+      }
+    }
+  },
+  mounted () {
+    this.dymaticStyle()
+    window.addEventListener('resize', () => {
+      this.dymaticStyle()
+    })
+  },
+  beforeDestroy () {
+    window.addEventListener('resize', () => {
+      this.dymaticStyle()
+    })
   }
-
 }
 </script>
 
-<style lang="less" scoped>
-.app-wrapper{
-  width: 100%;
-  min-height: 100%;
-  //position: relative;
-  .app-footer{
-    bottom: 0;
-    width: 100%;
-  }
-}
+<style scoped>
+
 </style>
