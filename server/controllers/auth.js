@@ -24,7 +24,7 @@ module.exports = {
     }
     const count = await AccountService.getAccountByUserName(username)
     const roleInfo = await AccountService.getAccountInfo(username)
-    
+
     if (count.length > 0 && roleInfo.length > 0) {
       const encryPwd = count[0].dataValues.password
       let roleName = []
@@ -37,8 +37,7 @@ module.exports = {
       }
       // console.log(userInfo)
       const flag = await verifyPwd(password, encryPwd)
-      const token = createToken(userInfo)
-      // console.log(userInfo)
+      const token = createToken(userInfo);
       if (flag) {
         ctx.body = {
           status: 200,
@@ -98,7 +97,7 @@ module.exports = {
       }
     }
   },
-  
+
   getAccountList: async ctx => {
     const params = ctx.query
     const {
@@ -169,7 +168,7 @@ module.exports = {
         msg: '不存在此id用户',
       }
     }
-    
+
     // const count = await AccountService.getAccountById(account.id)
     // if (count.length > 0) {
     //   account.password = await encrypted(account.password) // 加密密码
@@ -246,7 +245,7 @@ module.exports = {
       }
     }
   },
-  
+
   // 获取用户信息
   getAccountInfoById: async (ctx) => {
     const accountId = ctx.url.substring(19)

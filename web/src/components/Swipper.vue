@@ -20,6 +20,17 @@ export default {
         'https://img1.baidu.com/it/u=3550210899,1255484598&fm=26&fmt=auto'
       ]
     }
+  },
+  created () {
+    this.loadSwiper()
+  },
+  methods: {
+    async loadSwiper () {
+      const res = await this.$http.get('/web/swiper')
+      if (res.data && res.data.data && res.status === 200) {
+        this.images = res.data.data.map(item => item.url)
+      }
+    }
   }
 }
 </script>

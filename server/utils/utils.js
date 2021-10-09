@@ -47,6 +47,7 @@ const encrypted = password => {
 // 校验密码
 const verifyPwd = (password, hash) => {
   console.log(password,hash);
+  encrypted(password).then((res)=>{console.log(res)})
   /*
     password: 需要校验的密码
     hash: 数据库中已加密的密码

@@ -31,7 +31,21 @@ export default {
       websiteName: '北京xxx公司'
     }
   },
+  created () {
+    this.initData()
+  },
   methods: {
+    initData () {
+      const that=this
+      this.$http.get('/web')
+        .then(res => {
+          const { data, status } = res
+          if (status === 200 && data.data) {
+            // console.log(data)
+            that.websiteName = data.data.website_name
+          }
+        })
+    }
   }
 }
 </script>

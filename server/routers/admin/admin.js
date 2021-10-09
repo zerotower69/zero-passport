@@ -9,6 +9,8 @@ const article = require('./article')
 const role = require('./roles')
 const job = require('./job')
 const product = require('./product')
+///
+const swiper =require('./swipers')
 
 router.use(user.routes(), user.allowedMethods())
 router.use(Routes.routes(), Routes.allowedMethods())
@@ -17,5 +19,7 @@ router.use(article.routes(), article.allowedMethods())
 router.use(role.routes(), role.allowedMethods())
 router.use(job.routes(), job.allowedMethods())
 router.use(product.routes(), product.allowedMethods())
+//
+router.use(swiper.routes(),swiper.allowedMethods())
 
 module.exports = router

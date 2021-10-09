@@ -44,13 +44,26 @@ const Products = sequelize.define(
     product_link: {
       type: DataTypes.STRING,
       comment: '产品详情链接'
-    }
+    },
+      use_git:{
+        type:DataTypes.BOOLEAN,
+          allowNull:false,//不允许为空
+          comment:'是否使用git'
+      },
+      github_addr:{
+        type:DataTypes.STRING,
+          comment:'github链接'
+      },
+      gitee_addr:{
+        type:DataTypes.STRING,
+          comment:'gitee链接'
+      }
   }, {
     timestamps: true,
-    
+
     // 不想要 createdAt
     createdAt: 'create_time',
-    
+
     // 想要 updatedAt 但是希望名称叫做 updateTimestamp
     updatedAt: 'update_time'
   }

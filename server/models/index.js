@@ -16,6 +16,9 @@ const RoleMenuList = require('./roleMenuList')
 const Permission=require('./permission')
 const RolePermission=require('./rolePermission')
 const MenuPermission=require('./menuPermission')
+//--------------  zerotower add something on 8th,Otc,2021 -----------
+const Image=require('./images')
+const WebInfo =require('./webInfo')
 // const RecruitType=require('./recruitType')
 // 新闻关联
 // 一（News）对一（RecommendNews）
@@ -61,6 +64,8 @@ module.exports = {
   RoleMenuList,
   Permission,
   RolePermission,
-  MenuPermission
+  MenuPermission,
+  Image,
+  WebInfo
 }
 
