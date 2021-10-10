@@ -77,7 +77,6 @@
       :total="total"
       @current-change="handleCurrentChange"
     />
-
   </el-card>
 </template>
 

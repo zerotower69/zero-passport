@@ -90,7 +90,7 @@ export const constantRoutes = [
 ]
 
 /**
- * asyncRoutes
+ * asyncRoutes  (动态路由）
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
@@ -234,6 +234,50 @@ export const asyncRoutes = [
         }
       }
     ]
+  },
+  // swiper settings
+  {
+    path:'/swiper',
+    component: Layout,
+    redirect: '/swiper/list',
+    name:'Swiper',
+    meta:{
+      title:'轮播图管理',
+      //todo:swiper router icon
+      icon:'swiper',
+      roles:[]
+    },
+    children:[
+      {
+          path:'create',
+          component:()=>import("@/views/swipers/create"),
+          name:'CreateSwiper',
+          meta:{
+            title:'添加轮播图',
+            icon:'edit'
+          }
+        },
+      {
+          path: 'edit/:id(\\d+)',
+          component: () => import('@/views/swipers/edit'),
+          name: 'EditSwiper',
+          meta: {
+            title: '编辑轮播图',
+            noCache: true,
+            // activeMenu: '/swiper/list'
+          },
+          hidden: true
+        },
+      {
+          path: 'list',
+          component: () => import('@/views/swipers/list'),
+          name: 'SwiperList',
+          meta: {
+            title: '轮播图列表',
+            icon: 'list'
+          }
+        }
+      ]
   },
   {
     path: '/product',
