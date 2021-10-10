@@ -31,6 +31,15 @@
       align="center"
       >
       <el-button  type="primary" round plain size="small" @click="editClick(scope.row.id)">编辑</el-button>
+      <el-popconfirm
+        confirm-button-text="确定删除"
+        cancel-button-text="不用了"
+        icon="el-icon-info"
+        icon-color="red"
+        title="确认删除该轮播图吗？"
+        @onConfirm="deleteSwiper(scope.row.id)"
+      >
+        <el-button slot="reference" type="danger" round plain size="small">删除</el-button>      </el-popconfirm>
     </el-table-column>
   </el-table>
   <el-pagination
@@ -46,7 +55,7 @@
 
 <script>
 
-import {getSwiperList} from "@/api/swiper"
+import {getSwiperList,deleteSwiperById} from "@/api/swiper"
 export default {
   name: "listSwiper",
   components:{},
@@ -81,6 +90,18 @@ export default {
         }
         else{
           this.$message.error("获取轮播图信息失败")
+        }
+      })
+    },
+    deleteSwiper(id){
+      deleteSwiperById(id).then(response=>{
+        const res=response.data;
+        if(res.status===200){
+          this.$message.success("删除成功");
+          this.getSwiperList();
+        }
+        else{
+          this.$message.error("删除失败")
         }
       })
     },

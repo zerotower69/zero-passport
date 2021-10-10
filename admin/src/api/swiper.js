@@ -18,7 +18,7 @@ export function getSwiperList(query){
 //根据指定的id获取
 export function getSwiperById(id){
   return request({
-    url:`/admin/swiper`,
+    url:`/admin/swiper/${id}`,
     method:'get'
   })
 }

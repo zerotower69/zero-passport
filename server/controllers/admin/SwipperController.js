@@ -32,11 +32,19 @@ module.exports={
         console.log("id====>",id);
         if(id){
            const result=await SwiperService.findSwiperById(id);
-           if(result.length && result.length===1){
+           // console.log(result);
+           if(result.dataValues){
                ctx.body={
                    status:200,
                    msg:'查找指定的轮播图成功',
-                   data:result
+                   data:result.dataValues
+               }
+           }
+           else{
+               ctx.body={
+                   status:"error",
+                   msg:'查找指定的轮播图失败',
+                   data:null
                }
            }
         }
