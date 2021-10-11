@@ -8,11 +8,15 @@ const {Image} =require("../../models/index")
 
 class SwiperService {
     //查找所有的轮播图,
-    async findAllSwipers(){
-        return Image.findAll({
+    async findAllSwipers(params){
+        // console.log(params);
+        return Image.findAndCountAll({
             where:{
                 type:'swiper'
-            }
+            },
+            limit: parseInt(params.pagesize),
+            // 跳过实例数目
+            offset: (params.pagenum - 1) * parseInt(params.pagesize),
         });
     }
     //查找指定id的轮播图
@@ -20,7 +24,8 @@ class SwiperService {
         return Image.findOne({
             where:{
                 id:id
-            }
+            },
+            attributes: { exclude: ['create_time', 'update_time'] },
         })
     }
     //删除指定id的轮播图

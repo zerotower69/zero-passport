@@ -9,6 +9,7 @@ const SwiperService = require("../services/admin/swiperService");
 module.exports={
     findAllSwipers:async ctx=>{
         let result=await SwiperService.findAllSwipers();
+        console.log(result);
         if(result.length>0){
             result=result.map(item=>{
                 return {

@@ -85,12 +85,17 @@ const mutations = {
 }
 
 const actions = {
+  //生成动态路由
   async generateRoutes({ commit }, roles) {
-    let PermissionRouters = await getAsyncRoutes().then(res => {
-      const data = res.data.data.asyncRoutes
+    let PermissionRouters;
+    const res=await getAsyncRoutes();
+    if(res.data){
+      const data=res.data.data.asyncRoutes;
       PermissionRouters = makePermissionRouters(data, clientRoutes)
-      return PermissionRouters
-    })
+    }
+    else{
+      return Promise.reject("get async routers wrong!")
+    }
     // console.log(PermissionRouters)
     return new Promise(resolve => {
       let accessedRoutes

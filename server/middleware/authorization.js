@@ -34,6 +34,9 @@ module.exports = function () {
           // roles:['管理员']，转为字符串
           const roleName = userInfo.roles.toString()
           const result = await RolesService.getRolePermission(roleName)
+          // if(url.indexOf("/admin/swiper")){
+          //   console.log(result);
+          // }
           const permissionApi = []
           for (let i = 0; i < result.length; i++) {
             const tmp = {

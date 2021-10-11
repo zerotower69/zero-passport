@@ -99,7 +99,7 @@ export default {
       city: []
     }
   },
-  // 每次进入路有前，重新获取数据
+  // 每次进入路由前，重新获取数据
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.getJobCategory()

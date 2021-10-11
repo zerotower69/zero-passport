@@ -7,25 +7,44 @@
 const SwiperService = require("../../services/admin/swiperService");
 
 module.exports={
-    findAllSwipers:async ctx=>{
-        const result=await SwiperService.findAllSwipers();
-        if(result.length>0){
+    findAllSwipers:async (ctx)=>{
+        // console.log("request",ctx.query);
+        const query = ctx.query;
+        // console.log("params===>",params)
+        const {
+            count,
+            rows
+        }=await SwiperService.findAllSwipers(query);
+        if(rows.length>0){
             ctx.body={
                 status:200,
                 msg:'查找所有的轮播图成功',
-                data:result
+                data:{
+                    list:rows,
+                    total:count,
+                    limit:parseInt(query.pagesize) || 10,
+                }
             }
         }
     },
     findSwiperById:async ctx=>{
         const id=ctx.url.substring(21);
+        console.log("id====>",id);
         if(id){
            const result=await SwiperService.findSwiperById(id);
-           if(result.length && result.length===1){
+           // console.log(result);
+           if(result.dataValues){
                ctx.body={
                    status:200,
                    msg:'查找指定的轮播图成功',
-                   data:result
+                   data:result.dataValues
+               }
+           }
+           else{
+               ctx.body={
+                   status:"error",
+                   msg:'查找指定的轮播图失败',
+                   data:null
                }
            }
         }
