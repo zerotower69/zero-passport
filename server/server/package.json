@@ -4,18 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "watch": "supervisor app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "supervisor app.js",
-    "dev": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "consola": "^2.15.3",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
@@ -33,7 +28,6 @@
     "sequelize-auto": "^0.8.2"
   },
   "devDependencies": {
-    "eslint": "^7.25.0",
-    "supervisor": "^0.12.0"
+    "eslint": "^7.25.0"
   }
 }
