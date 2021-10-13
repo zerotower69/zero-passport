@@ -19,6 +19,7 @@ const MenuPermission=require('./menuPermission')
 //--------------  zerotower add something on 8th,Otc,2021 -----------
 const Image=require('./images')
 const WebInfo =require('./webInfo')
+const proCategory = require('./proCategory')
 // const RecruitType=require('./recruitType')
 // 新闻关联
 // 一（News）对一（RecommendNews）
@@ -66,6 +67,7 @@ module.exports = {
   RolePermission,
   MenuPermission,
   Image,
-  WebInfo
+  WebInfo,
+  proCategory
 }
 

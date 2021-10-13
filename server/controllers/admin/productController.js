@@ -3,10 +3,12 @@
  * @author Aerowang
  * @date 2021/5/29
  */
+const consola = require('consola');
 const ProductService = require('../../services/admin/productService')
 module.exports = {
   addProduct: async ctx => {
     const data = ctx.request.body
+    // consola.info("data==>",data);
     const product = {
       product_title: data.title,
       product_desc: data.description,
@@ -14,6 +16,9 @@ module.exports = {
       product_link: data.link,
       cover_img: data.bgImg,
       product_logo: data.logo,
+      use_git:data.use_git,
+      github_addr:data.github_addr,
+      gitee_addr:data.gitee_addr
     }
     const temp = Object.values(product)
     if (temp.indexOf(undefined) !== -1) {

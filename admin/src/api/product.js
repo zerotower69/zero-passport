@@ -4,10 +4,10 @@
  * @date 2021/5/29
  */
 import request from '@/utils/request'
-
+import {easyGenerateUrl} from '@/utils/helps'
 export function addProduct(data) {
   return request({
-    url: '/admin/product',
+    url:'/admin/product',
     method: 'post',
     data
   })
@@ -25,9 +25,9 @@ export function deleteProduct(id) {
     method: 'delete'
   })
 }
-export function getProductList() {
+export function getProductList(pageBean) {
   return request({
-    url: '/admin/product',
+    url: easyGenerateUrl('/admin/product',pageBean),
     method: 'get'
   })
 }

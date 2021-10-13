@@ -31,7 +31,7 @@
         </el-form-item>
       </el-form-item>
       <el-form-item label="职位描述" prop="description">
-        <markdown ref="descriptionMd" v-model="jobForm.description" class="markdown" />
+        <markdown :only-write="true" ref="descriptionMd" v-model="jobForm.description" class="markdown" />
       </el-form-item>
       <el-form-item label="职位要求" prop="requirement">
         <markdown ref="requirementMd" v-model="jobForm.requirement" class="markdown" />

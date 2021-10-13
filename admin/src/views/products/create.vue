@@ -23,6 +23,34 @@
       <el-form-item label="产品链接" prop="link">
         <el-input v-model="productForm.link" placeholder="请输入产品详情链接" />
       </el-form-item>
+      <el-form-item label="git仓库设置" prop="use_git" style="display:block;">
+        <el-row style="display: block;">
+          <el-col :span="24">
+            <el-switch
+              v-model="productForm.use_git"
+              active-color="green"
+              inactive-color="red"
+              active-text="使用git"
+              inactive-text="关闭git"
+              :active-value="true"
+              :inactive-value="false"
+            ></el-switch>
+          </el-col>
+        </el-row>
+      </el-form-item>
+      <el-form-item v-if="productForm.use_git">
+        <!--        github address-->
+        <el-row>
+          <el-col :span="6"><span>github地址</span></el-col>
+          <el-col :span="18"><el-input type="text" v-model="productForm.github_addr"></el-input></el-col>
+        </el-row>
+      </el-form-item>
+      <el-form-item v-if="productForm.use_git">
+        <el-row>
+          <el-col :span="6"><span>gitee地址</span></el-col>
+          <el-col :span="18"><el-input type="text" v-model="productForm.gitee_addr"></el-input></el-col>
+        </el-row>
+      </el-form-item>
       <el-form-item required>
         <el-form-item label="产品图片" prop="bgImg">
           <el-upload
@@ -99,7 +127,10 @@ export default {
         subDescription: '',
         link: '',
         bgImg: '',
-        logo: ''
+        logo: '',
+        use_git:false,
+        github_addr:'',
+        gitee_addr:''
       },
       ruleProductForm: {
         title: [{

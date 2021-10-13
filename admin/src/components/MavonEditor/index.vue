@@ -15,6 +15,12 @@ import { uploadFile, deleteFile } from '@/api/file'
 
 export default {
   name: 'Markdown',
+  props:{
+    onlyWrite:{
+      type:Boolean,
+      default:false,
+    }
+  },
   components: {},
   data() {
     return {
@@ -24,6 +30,9 @@ export default {
         boxShadow: false
       }
     }
+  },
+  mounted() {
+    this.configs.preview=!this.onlyWrite
   },
   methods: {
     /**

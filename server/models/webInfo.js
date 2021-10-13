@@ -22,7 +22,12 @@ const WebInfo=sequelize.define("aw_webinfo",{
          *     email:
          *     phone:
          *     city:
-         *     swiper_way:hover
+         *     swiper_way:hover,
+         *     com_name:'前端小分队',
+         *     use_ICP:false,  //备案号
+         *     police_number:''  //公安网备案号
+         *     ICP_number:'' //ICP备案号
+         *
          * }
          */
     },

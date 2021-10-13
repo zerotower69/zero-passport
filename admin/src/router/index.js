@@ -322,6 +322,28 @@ export const asyncRoutes = [
     ]
   },
   {
+    path:'/webinfo',
+    component:Layout,
+    redirect: '/webinfo/basic',
+    name:'WebInfo',
+    meta:{
+      title:'网站信息设置',
+      icon:'info',
+      role:[],
+    },
+    children: [
+      {
+        path:'basic',
+        name:'基本信息配置',
+        component:()=>import('@/views/info/WebInfo'),
+        meta: {
+          title:'基本信息',
+          icon:'home'
+        }
+      }
+    ]
+  },
+  {
     path: 'external-link',
     component: Layout,
     children: [

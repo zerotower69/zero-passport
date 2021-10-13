@@ -57,6 +57,11 @@ const Products = sequelize.define(
       gitee_addr:{
         type:DataTypes.STRING,
           comment:'gitee链接'
+      },
+      category_id:{
+        type:DataTypes.INTEGER(11),
+        allowNull:true,  //todo:change to false
+        comment:'分类id(二级)'
       }
   }, {
     timestamps: true,
