@@ -6,6 +6,7 @@ const product = require('../../controllers/productController')
 const job = require('../../controllers/jobController')
 const swiper =require('../../controllers/SwipperController')
 const webinfo=require('../../controllers/webInfoController')
+const proCategory =require('../../controllers/admin/proCategoryController')
 const routers = router
   // 新闻
   .get('/newslist', news.newsList)
@@ -23,4 +24,6 @@ const routers = router
   .get('/swiper',swiper.findAllSwipers)
 //网站基本信息
     .get('/',webinfo.getLatestInfo)
+  //获取商品分类数据
+    .get('/pro/category/tree',proCategory.getTreeData)
 module.exports = routers

@@ -15,6 +15,7 @@ const proCategory=sequelize.define("aw_proCategory",{
     parent_id:{
         type:DataTypes.INTEGER(11),
         allowNull: true,
+        default:null,
         comment: "父id"
     },
     content:{

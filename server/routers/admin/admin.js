@@ -9,6 +9,7 @@ const article = require('./article')
 const role = require('./roles')
 const job = require('./job')
 const product = require('./product')
+const proCategory=require('./proCategory');
 ///
 const swiper =require('./swipers')
 
@@ -21,5 +22,6 @@ router.use(job.routes(), job.allowedMethods())
 router.use(product.routes(), product.allowedMethods())
 //
 router.use(swiper.routes(),swiper.allowedMethods())
+router.use(proCategory.routes(),product.allowedMethods())
 
 module.exports = router
