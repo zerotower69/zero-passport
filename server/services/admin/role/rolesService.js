@@ -15,7 +15,7 @@ class rolesService {
   async getRolesList () {
     return Role.findAll()
   }
-  
+
   async getRoleDetail (id) {
     return Role.findOne({
       where: {
@@ -23,11 +23,11 @@ class rolesService {
       }
     })
   }
-  
+
   async addRole (params) {
     return Role.create(params)
   }
-  
+
   async updateRole (id, value) {
     await Role.update(value, {
       where: {
@@ -35,7 +35,7 @@ class rolesService {
       }
     })
   }
-  
+
   async deleteRole (id) {
     await Role.destroy({
       where: {
@@ -43,18 +43,18 @@ class rolesService {
       }
     })
   }
-  
+
   // 角色权限服务
   async getPermission () {
     return await Permission.findAll({
       attributes: ['id', 'path', 'description', 'state']
     })
   }
-  
+
   async getMenuList () {
     return await MenuList.findAll()
   }
-  
+
   async getRoleMenuList (roleId) {
     const result = await RoleMenuList.findAll({
       where: {
@@ -78,7 +78,7 @@ class rolesService {
     }
     return menuList
   }
-  
+
   async getRolePermission (roleName) {
     const { id: roleId } = await Role.findOne({
       where: {
@@ -112,9 +112,9 @@ class rolesService {
     }
     return result2
   }
-  
+
   async updateRoleMenuList (roleId, value) {
-    
+
     await RoleMenuList.destroy({
       where: {
         aw_role_id: roleId
@@ -125,7 +125,7 @@ class rolesService {
     }
     return true
   }
-  
+
   async updateRolePermissionList(roleId,value){
     await RolePermission.destroy({
       where: {
@@ -136,6 +136,17 @@ class rolesService {
       await RolePermission.create(value[i])
     }
     return true
+  }
+
+  async getRoleIByRole(role){
+    return Role.findOne({
+      attributes:{
+        include:['id']
+      },
+      where:{
+        name:role
+      }
+    })
   }
 }
 

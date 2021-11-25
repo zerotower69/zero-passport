@@ -32,9 +32,9 @@ router.beforeEach(async(to, from, next) => {
       } else {
         try {
           // 获取用户信息
-          // 注意：角色必须是对象数组！例如：['admin']或，['developer'，'editor']
-          // const { roles } = await store.dispatch('user/getInfo')
+          // 注意：角色必须是对象数组！例如：['admin']或，['developer'，'editor'
           const { roles } = await store.dispatch('user/getInfo')
+          console.log("roles===>",roles)
           const newRoles = JSON.stringify(roles)
           const rolesArr = JSON.parse(newRoles)
           // console.log(rolesArr)

@@ -19,7 +19,15 @@ const generateRightModel=(message,data)=>{
     }
 }
 
+const generateWrongDataPlus=(msg,wrongData)=>{
+    return{
+        msg,
+        wrongData
+    }
+}
+
 module.exports={
     generateWrongModel,
-    generateRightModel
+    generateRightModel,
+    generateWrongDataPlus
 }

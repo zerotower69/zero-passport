@@ -12,6 +12,7 @@ const product = require('./product')
 const proCategory=require('./proCategory');
 ///
 const swiper =require('./swipers')
+const menu =require('./menu')
 
 router.use(user.routes(), user.allowedMethods())
 router.use(Routes.routes(), Routes.allowedMethods())
@@ -23,5 +24,6 @@ router.use(product.routes(), product.allowedMethods())
 //
 router.use(swiper.routes(),swiper.allowedMethods())
 router.use(proCategory.routes(),product.allowedMethods())
+router.use(menu.routes(),menu.allowedMethods())
 
 module.exports = router
